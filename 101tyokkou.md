@@ -1,4 +1,4 @@
-# 101tyokkou.md - 三角関数
+# 101tyokkou.md - 三角関数の直交性
 
 ```c:101tyokkou.c
 #include <stdio.h>
