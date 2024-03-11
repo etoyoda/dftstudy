@@ -33,4 +33,4 @@ raise "no source" if src.nil?
 run "gcc -oa.out #{src} -lm"
 run "./a.out > z-log.txt"
 run "diff -u #{log} - < z-log.txt" if log
-run "rm -f z-log.txt #{src} #{log}"
+run "rm -f a.out z-log.txt #{src} #{log}"
