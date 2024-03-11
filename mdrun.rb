@@ -1,18 +1,20 @@
 #!/usr/bin/ruby
 
-of=ofp=nil
-ofs=[]
+of=ofp=src=log=nil
 
 for line in ARGF
   case line
-  when /^```c:(.*\.c)\s*/ then
-    of = $1
+  when /^```c:(\S+\.c)\s*/ then
+    src = of = $1
     ofp = File.open(of, "wt")
-    ofs.push of
+  when /^```text:(\S+)\s*$/ then
+    log = of = $1
+    ofp = File.open(of, "wt")
   when /^```\s*$/ then
-    raise "closing un-opened file" if of.nil?
-    ofp.close
-    of = ofp = nil
+    if of then
+      ofp.close
+      of = ofp = nil
+    end
   else
     ofp.puts line if of
   end
@@ -27,5 +29,8 @@ def run cmd
   end
 end
 
-run "gcc -oa.out #{ofs.join(' ')} -lm"
-run "./a.out"
+raise "no source" if src.nil?
+run "gcc -oa.out #{src} -lm"
+run "./a.out > z-log.txt"
+run "diff -u #{log} - < z-log.txt" if log
+run "rm -f z-log.txt #{src} #{log}"
