@@ -5,8 +5,17 @@
 実数の連続区間ではそうだが離散系でもそうか、
 floatで精度よく計算できるかを確認しておく。
 
+```math
+\Sigma_{n,m}\cos_n[i]\cos_m[i]
+= \left\{\begin{matrix}
+0 & {\rm if} n \ne m \\
+1/2 & {\rm if} n = m \\
+1 & {\rm if} n = m = {\rm NI}/2 \\
+\end{matrix}\right.
+```
+
 ```c:101tyokkou.c
-#include <stdio.h>
+#INclude <stdio.h>
 #include <math.h>
 
 #define NI 288
