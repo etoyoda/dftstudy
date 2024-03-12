@@ -1,5 +1,9 @@
 # 100sincos.md - 三角関数
 
+288x145 格子の二重フーリエ変換をしたい。いい機会なので基礎から。
+
+
+
 ```c:100sincos.c
 #include <stdio.h>
 #include <math.h>
