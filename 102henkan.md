@@ -1,5 +1,18 @@
 # 102henkan.md - 離散フーリエ変換
 
+順変換・逆変換が精度良くできるか試験する。
+
+## 順変換
+正規化について真面目に考えていなかったので
+
+```math
+a_0 = (1/N_i)\Sigma_{i=0}^{N_i} F[i]
+```
+
+```math
+~F[i] = F[i] - a_0
+```
+
 ```c:102henkan.c
 #include <stdio.h>
 #include <math.h>
