@@ -15,7 +15,6 @@
 ```math
 (1/N_i) \Sigma_{i=0}^{N_i-1}\cos_n[i]\sin_m[i]
 = 0
-\end{matrix}\right.
 ```
 
 ```math
