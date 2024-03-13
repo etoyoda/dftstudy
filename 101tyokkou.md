@@ -6,26 +6,24 @@
 ```math
 (1/N_i) \Sigma_{i=0}^{N_i-1}\cos_n[i]\cos_m[i]
 = \left\{\begin{matrix}
-0 & {\rm if } n \ne m \\
-1/2 & {\rm if } n = m \\
-1 & {\rm if } n = m = N_i/2
+0 & {\rm if\quad} n \ne m \\
+1/2 & {\rm if\quad} n = m \ne N_i/2 \\
+1 & {\rm if\quad} n = m = N_i/2
 \end{matrix}\right.
 ```
 
 ```math
 (1/N_i) \Sigma_{i=0}^{N_i-1}\cos_n[i]\sin_m[i]
-= \left\{\begin{matrix}
-0 & {\rm if } n \ne m \\
-1/2 & {\rm if } n = m
+= 0
 \end{matrix}\right.
 ```
 
 ```math
 (1/N_i) \Sigma_{i=0}^{N_i-1}\sin_n[i]\sin_m[i]
 = \left\{\begin{matrix}
-0 & {\rm if } n \ne m \\
-1/2 & {\rm if } n = m \\
-0 & {\rm if } n = m = N_i/2
+0 & {\rm if\quad} n \ne m \\
+1/2 & {\rm if\quad} n = m \ne N_i/2 \\
+0 & {\rm if\quad} n = m = N_i/2
 \end{matrix}\right.
 ```
 
@@ -33,7 +31,7 @@
 floatで精度よく計算できるかを確認しておく。
 
 ```c:101tyokkou.c
-#INclude <stdio.h>
+#include <stdio.h>
 #include <math.h>
 
 #define NI 288
