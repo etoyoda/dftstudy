@@ -6,7 +6,7 @@
 ```math
 (1/N_i) \sum_{i=0}^{N_i-1}\cos_n[i]\cos_m[i]
 = \left\{\begin{matrix}
-0 & \text{if}\quad n \ne m \fill \\
+0 & \text{if}\quad n \ne m \hfill \\
 1/2 & \text{if}\quad n = m \ne N_i/2 \\
 1 & \text{if}\quad n = m = N_i/2
 \end{matrix}\right.
@@ -20,7 +20,7 @@
 ```math
 (1/N_i) \sum_{i=0}^{N_i-1}\sin_n[i]\sin_m[i]
 = \left\{\begin{matrix}
-0 & \text{if}\quad n \ne m \fill \\
+0 & \text{if}\quad n \ne m \hfill \\
 1/2 & \text{if}\quad n = m \ne N_i/2 \\
 0 & \text{if}\quad n = m = N_i/2
 \end{matrix}\right.
