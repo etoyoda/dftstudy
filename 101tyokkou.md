@@ -4,25 +4,25 @@
 だから基底と内積を取るだけで展開係数を得る。
 
 ```math
-(1/N_i) \Sigma_{i=0}^{N_i-1}\cos_n[i]\cos_m[i]
+(1/N_i) \sum_{i=0}^{N_i-1}\cos_n[i]\cos_m[i]
 = \left\{\begin{matrix}
-0 & {\rm if\quad} n \ne m \\
-1/2 & {\rm if\quad} n = m \ne N_i/2 \\
-1 & {\rm if\quad} n = m = N_i/2
+0 & \text{if}\quad n \ne m \fill \\
+1/2 & \text{if}\quad n = m \ne N_i/2 \\
+1 & \text{if}\quad n = m = N_i/2
 \end{matrix}\right.
 ```
 
 ```math
-(1/N_i) \Sigma_{i=0}^{N_i-1}\cos_n[i]\sin_m[i]
+(1/N_i) \sum_{i=0}^{N_i-1}\cos_n[i]\sin_m[i]
 = 0
 ```
 
 ```math
-(1/N_i) \Sigma_{i=0}^{N_i-1}\sin_n[i]\sin_m[i]
+(1/N_i) \sum_{i=0}^{N_i-1}\sin_n[i]\sin_m[i]
 = \left\{\begin{matrix}
-0 & {\rm if\quad} n \ne m \\
-1/2 & {\rm if\quad} n = m \ne N_i/2 \\
-0 & {\rm if\quad} n = m = N_i/2
+0 & \text{if}\quad n \ne m \fill \\
+1/2 & \text{if}\quad n = m \ne N_i/2 \\
+0 & \text{if}\quad n = m = N_i/2
 \end{matrix}\right.
 ```
 

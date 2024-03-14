@@ -24,12 +24,12 @@ F^*[i] = F[i] - a_0
 
 ```math
 a_n = \frac{2}{N_i} \sum_{i=0}^{N_i} \cos_m[i]F^*[i]
-\quad\text{for} n=1..N_i
+\quad\text{for}\quad n=1..N_i
 ```
 
 ```math
 b_n = \frac{2}{N_i} \sum_{i=0}^{N_i} \sin_m[i]F^*[i]
-\quad\text{for} n=1..N_i-1
+\quad\text{for}\quad n=1..N_i-1
 ```
 
 ## 逆変換
