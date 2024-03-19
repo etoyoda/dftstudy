@@ -4,7 +4,7 @@
 だから基底と内積を取るだけで展開係数を得る。
 
 ```math
-(1/N_i) \sum_{i=0}^{N_i-1}\cos_n[i]\cos_m[i]
+\frac{1}{N_i} \sum_{i=0}^{N_i-1}\cos_n[i]\cos_m[i]
 = \left\{\begin{matrix}
 0 & \text{if}\quad n \ne m \hfill \\
 1/2 & \text{if}\quad n = m \ne N_i/2 \\
@@ -13,12 +13,12 @@
 ```
 
 ```math
-(1/N_i) \sum_{i=0}^{N_i-1}\cos_n[i]\sin_m[i]
+\frac{1}{N_i} \sum_{i=0}^{N_i-1}\cos_n[i]\sin_m[i]
 = 0
 ```
 
 ```math
-(1/N_i) \sum_{i=0}^{N_i-1}\sin_n[i]\sin_m[i]
+\frac{1}{N_i} \sum_{i=0}^{N_i-1}\sin_n[i]\sin_m[i]
 = \left\{\begin{matrix}
 0 & \text{if}\quad n \ne m \hfill \\
 1/2 & \text{if}\quad n = m \ne N_i/2 \\
