@@ -14,10 +14,12 @@
 それ以外の普通の数学的関数を $(...)$ であらわす。
 格子位置 $i$ ($0\le i\le N_i$) について次を基底とする。
 ```math
-\cos_n[i] = \cos(n\pi i/N_i) \quad\text{for}\quad n=1..N_i/2;
+\cos_n[i] = \cos\left(\frac{n\pi i}{N_i}\right)
+\quad\text{for}\quad n=1..\frac{N_i}{2};
 ```
 ```math
-\sin_n[i] = \sin(n\pi i/N_i) \quad\text{for}\quad n=1..N_i/2-1
+\sin_n[i] = \sin\left(\frac{n\pi i}{N_i}\right)
+\quad\text{for}\quad n=1..\frac{N_i}{2}-1
 ```
 
 これらの基底を用いて、周期関数 $F[i]$ を次のように変換することを目指す。
@@ -29,7 +31,9 @@ F[i] = a_0 + \sum_{m=1}^{N_i/2} (a_m\cos_m[i] + b_m\sin_m[i])
 ## 実際の値
 
 プログラムと計算結果は下のとおり。
-ひとつ留意すべきは、$\sin_144[i] = 0$ という結果になっていることで、
+ひとつ留意すべきは、
+$\sin_{144}[i] = 0$
+という結果になっていることで、
 つまり一般には $\sin_{N_i/2} = 0$ だから $b_{N_i/2} = 0$ としてよい
 （この項を計算する効果がない）。
 
