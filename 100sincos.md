@@ -10,15 +10,15 @@
 
 ## 基底
 
-以下、離散的格子位置に対して定義される関数や配列値を角括弧添字 $[...]$ で、
-それ以外の普通の数学的関数を $(...)$ であらわす。
+以下、離散的格子位置に対して定義される関数や配列値を角括弧添字 $[...]$
+であらわす。
 格子位置 $i$ ($0\le i\le N_i$) について次を基底とする。
 ```math
-\cos_n[i] = \cos\left(\frac{n\pi i}{N_i}\right)
+\cos_n[i] = \cos\frac{n\pi i}{N_i}
 \quad\text{for}\quad n=1..\frac{N_i}{2};
 ```
 ```math
-\sin_n[i] = \sin\left(\frac{n\pi i}{N_i}\right)
+\sin_n[i] = \sin\frac{n\pi i}{N_i}
 \quad\text{for}\quad n=1..\frac{N_i}{2}-1
 ```
 
