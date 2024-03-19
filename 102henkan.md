@@ -2,13 +2,16 @@
 
 順変換・逆変換が精度良くできるか試験する。
 
-## 前処理(DC成分除去)
+## 前処理 (準基底の除去)
+
 元のデータ $F[i]$ から平均値を差し引いた $F^*[i]$ を処理対象とする。
 
-数学的には DC 成分は全基底との内積がゼロなので効果がないはずだが、無駄に桁が大きい数値を加減算すると桁落ちのおそれがある。
+数学的には準基底 $\cos_0$ を含めても直交なんだから、
+DC成分が乗った生データで各基底と内積とっても結果は変わらないはずではあるが、
+無駄に桁が大きい数値を加減算すると桁落ちのおそれがある。
 
 ```math
-a_0 = \frac{1}{N_i} \sum_{i=0}^{N_i} F[i]
+a_0 = \frac{1}{N_i} \sum_{i=0}^{N_i-1} F[i]
 ```
 
 ```math
@@ -26,25 +29,25 @@ $\sqrt{2}\cos_m[i], \sqrt{2}\sin_m[i]$
 (あとで考えを変えるかもしれない)
 
 ```math
-a_m = \frac{2}{N_i} \sum_{i=0}^{N_i} \cos_m[i]F^*[i]
-\quad\text{for}\quad m=1..N_i-1
+a_m = \frac{2}{N_i} \sum_{i=0}^{N_i-1} \cos_m[i]F^*[i]
+\quad\text{for}\quad m=1..N_i/2-1
 ```
 
-波数 $N_i$ についてだけ基底の内積が 1/2 じゃなくて 1 なので別扱い
+波数 $N_i/2$ についてだけ基底の内積が 1/2 じゃなくて 1 なので別扱い
 
 ```math
-a_{N_i} = \frac{1}{N_i} \sum_{i=0}^{N_i} \cos_{N_i}[i]F^*[i]
+a_{N_i/2} = \frac{1}{N_i} \sum_{i=0}^{N_i-1} \cos_{N_i/2}[i]F^*[i]
 ```
 
 ```math
-b_n = \frac{2}{N_i} \sum_{i=0}^{N_i} \sin_m[i]F^*[i]
-\quad\text{for}\quad n=1..N_i-1
+b_n = \frac{2}{N_i} \sum_{i=0}^{N_i-1} \sin_m[i]F^*[i]
+\quad\text{for}\quad n=1..N_i/2-1
 ```
 
 ## 逆変換
 
 ```math
-F[i] = a_0 + \sum_{m=1}^{N_i} (a_m\cos_m[i] + b_m\sin_m[i])
+F[i] = a_0 + \sum_{m=1}^{N_i/2} (a_m\cos_m[i] + b_m\sin_m[i])
 ```
 
 # 実験コードと結果
