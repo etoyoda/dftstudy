@@ -53,3 +53,93 @@ F[i] = a_0
 + \sum_{n=1}^{N_j/2} (a_n{\rm cosy}_n[j] + b_n{\rm siny}_n[j])
 ```
 
+# テストプログラム
+
+東西のときとほとんど変わらないが、直交性を確認する。
+
+```c:110nanboku.c
+#include <stdio.h>
+#include <math.h>
+
+#define NJ 144
+#define HALF_NJ (NJ/2)
+
+float
+degpx(int i) {
+  return 360.0 * i / NJ;
+}
+
+float
+sinpy(int i) {
+  return sinf(i*M_PI/HALF_NJ);
+}
+
+float
+cospy(int i) {
+  return cosf(i*M_PI/HALF_NJ);
+}
+
+float
+cospy2(int i) {
+  return cosf(i*M_PI/NJ);
+}
+
+const float PREC = 2.5e-6f;
+
+int
+main(void) {
+
+  puts("cos*cos");
+  for (int m=1; m<=HALF_NJ; m++) {
+    for (int n=1; n<=m; n++) {
+      float sum = 0.0f;
+      for (int j=0; j<NJ; j++) {
+        sum += cospy(m*j) * cospy(n*j);
+      }
+      float expect = (m == n) ? 0.5f : 0.0f;
+      if (fabsf(sum/NJ-expect) > PREC) {
+        printf("%4d %4d %+9.2g\n", m, n, sum/NJ-expect);
+      }
+    }
+  }
+
+  puts("cos*sin");
+  for (int m=1; m<=HALF_NJ; m++) {
+    for (int n=1; n<=HALF_NJ; n++) {
+      float sum = 0.0f;
+      for (int j=0; j<NJ; j++) {
+        sum += cospy(m*j) * sinpy(n*j);
+      }
+      float expect = 0.0;
+      if (fabsf(sum/NJ-expect) > PREC) {
+        printf("%4d %4d %+9.2g\n", m, n, sum/NJ-expect);
+      }
+    }
+  }
+
+  puts("sin*sin");
+  for (int m=1; m<=HALF_NJ; m++) {
+    for (int n=1; n<=m; n++) {
+      float sum = 0.0f;
+      for (int j=0; j<NJ; j++) {
+        sum += sinpy(m*j) * sinpy(n*j);
+      }
+      float expect = (m == n) ? 0.5f : 0.0f;
+      if (fabsf(sum/NJ-expect) > PREC) {
+        printf("%4d %4d %+9.2g\n", m, n, sum/NJ-expect);
+      }
+    }
+  }
+
+  return 0;
+}
+```
+
+実行結果
+```text:110nanboku.txt
+cos*cos
+  72   72      +0.5
+cos*sin
+sin*sin
+  72   72      -0.5
+```
