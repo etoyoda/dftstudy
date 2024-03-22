@@ -62,8 +62,36 @@ cospx(int i) {
   return cosf(i*M_PI/HALF_NI);
 }
 
+const float PREC = 2.5e-6f;
+
 int
 main(void) {
+
+  float maxerr = 0.0f;
+
+  puts("cos*1");
+  for (int m=1; m<=HALF_NI; m++) {
+    float sum = 0.0f;
+    for (int i=0; i<NI; i++) {
+      sum += cospx(m*i);
+    }
+    float err = fabsf(sum/NI);
+    if (err > maxerr) maxerr = err;
+    if (err < PREC) continue;
+    printf("%4d %#9.3g\n", m, err);
+  }
+
+  puts("sin*1");
+  for (int m=1; m<=HALF_NI; m++) {
+    float sum = 0.0f;
+    for (int i=0; i<NI; i++) {
+      sum += sinpx(m*i);
+    }
+    float err = fabsf(sum/NI);
+    if (err > maxerr) maxerr = err;
+    if (err < PREC) continue;
+    printf("%4d %#9.3g\n", m, err);
+  }
 
   puts("cos*cos");
   for (int m=1; m<=HALF_NI; m++) {
@@ -72,10 +100,11 @@ main(void) {
       for (int i=0; i<NI; i++) {
         sum += cospx(m*i) * cospx(n*i);
       }
-      float expect = (m == n) ? 0.5f : 0.0f;
-      if (fabsf(sum/NI-expect) > 2.5e-6f) {
-        printf("%4d %4d %+9.2g\n", m, n, sum/NI-expect);
-      }
+      float expect = (m == n) ? ((m == HALF_NI) ? 1.0f : 0.5f) : 0.0f;
+      float err = fabsf(sum/NI-expect);
+      if (err > maxerr) maxerr = err;
+      if (err < PREC) continue;
+      printf("%4d %4d %#9.3g\n", m, n, err);
     }
   }
 
@@ -87,9 +116,10 @@ main(void) {
         sum += cospx(m*i) * sinpx(n*i);
       }
       float expect = 0.0;
-      if (fabsf(sum/NI-expect) > 2.5e-6f) {
-        printf("%4d %4d %+9.2g\n", m, n, sum/NI-expect);
-      }
+      float err = fabsf(sum/NI-expect);
+      if (err > maxerr) maxerr = err;
+      if (err < PREC) continue;
+      printf("%4d %4d %#9.3g\n", m, n, err);
     }
   }
 
@@ -100,12 +130,15 @@ main(void) {
       for (int i=0; i<NI; i++) {
         sum += sinpx(m*i) * sinpx(n*i);
       }
-      float expect = (m == n) ? 0.5f : 0.0f;
-      if (fabsf(sum/NI-expect) > 2.5e-6f) {
-        printf("%4d %4d %+9.2g\n", m, n, sum/NI-expect);
-      }
+      float expect = (m == n) ? ((m == HALF_NI) ? 0.0f : 0.5f) : 0.0f;
+      float err = fabsf(sum/NI-expect);
+      if (err > maxerr) maxerr = err;
+      if (err < PREC) continue;
+      printf("%4d %4d %#9.3g\n", m, n, err);
     }
   }
+
+  printf("maxerr=%#9.3g\n", maxerr);
 
   return 0;
 }
@@ -113,16 +146,17 @@ main(void) {
 
 実行結果
 ```text:101tyokkou.txt
+cos*1
+sin*1
 cos*cos
- 143   26  +2.6e-06
- 144  113  -2.9e-06
- 144  144      +0.5
+ 143   26  2.59e-06
+ 144  113  2.86e-06
 cos*sin
- 101  144    +3e-06
- 102  119  -2.7e-06
- 103  144  -2.9e-06
- 131  131  +3.4e-06
+ 101  144  3.03e-06
+ 102  119  2.71e-06
+ 103  144  2.94e-06
+ 131  131  3.38e-06
 sin*sin
- 144  102    -4e-06
- 144  144      -0.5
+ 144  102  3.99e-06
+maxerr= 3.99e-06
 ```
