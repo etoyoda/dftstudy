@@ -14,12 +14,12 @@
 であらわす。
 格子位置 $i$ ($0\le i\le N_i$) について次を基底とする。
 ```math
-\cos_n[i] = \cos\frac{2n\pi i}{N_i}
-\quad\text{for}\quad n=1..\frac{N_i}{2};
+\cos_m[i] = \cos\frac{2m\pi i}{N_i}
+\quad\text{for}\quad m=1..\frac{N_i}{2};
 ```
 ```math
-\sin_n[i] = \sin\frac{2n\pi i}{N_i}
-\quad\text{for}\quad n=1..\frac{N_i}{2}-1
+\sin_m[i] = \sin\frac{2m\pi i}{N_i}
+\quad\text{for}\quad m=1..\frac{N_i}{2}-1
 ```
 
 これらの基底を用いて、周期関数 $F[i]$ を次のように変換することを目指す。
