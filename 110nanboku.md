@@ -8,10 +8,33 @@
 
 最終目的は2次元フーリエ変換だがまずは南北1次元の変換について考える。
 
-それを周期144のデータに見せかけるために、
-元のデータ $F[j]$ から平均値 $a_0$ と
-周期288のcos波を差し引いた $F^*[j]$ を処理対象とする。
+## 基底・準基底
+
+南北格子数 $N_j+1=145$ について、 
+格子位置 $i$ ($0\le i\le N_j$) について次を基底とする。
+```math
+{\rm cosy}_n[j] = \cos\frac{2n\pi j}{N_j}
+\quad\text{for}\quad n=1..\frac{N_j}{2};
+```
+```math
+{\rm siny}_n[j] = \sin\frac{2n\pi j}{N_j}
+\quad\text{for}\quad n=1..\frac{N_j}{2}-1
+```
+
+両端の値が異なるため、準基底は1つ増やす必要がある。
 
 ```math
-a_0 = \frac{1}{N_j} \sum_{j=0}^{N_j-1} F[j]
+{\rm cosy}_0[j] = \cos 0 = 1
 ```
+```math
+{\rm cosy}_{1/2}[j] = \cos\frac{1\pi j}{N_j}
+```
+
+これらの基底・準基底を用いて、関数 $F[i]$ を次のように変換することを目指す。
+
+```math
+F[i] = a_0 {\rm cosy}_0[j]
++ a_{1/2} {\rm cosy}_{1/2}[j]
++ \sum_{n=1}^{N_j/2} (a_n{\rm cosy}_n[j] + b_n{\rm siny}_n[j])
+```
+
