@@ -27,14 +27,14 @@
 {\rm cosy}_0[j] = \cos 0 = 1
 ```
 ```math
-{\rm cosy}_{1/2}[j] = \cos\frac{1\pi j}{N_j}
+{\rm cosy}_{\tfrac{1}{2}}[j] = \cos\frac{1\pi j}{N_j}
 ```
 
 これらの基底・準基底を用いて、関数 $F[i]$ を次のように変換することを目指す。
 
 ```math
 F[i] = a_0 {\rm cosy}_0[j]
-+ a_{1/2} {\rm cosy}_{1/2}[j]
++ a_{\tfrac{1}{2}} {\rm cosy}_{\tfrac{1}{2}}[j]
 + \sum_{n=1}^{N_j/2} (a_n{\rm cosy}_n[j] + b_n{\rm siny}_n[j])
 ```
 
