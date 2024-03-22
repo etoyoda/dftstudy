@@ -10,7 +10,7 @@
 
 ## 基底・準基底
 
-南北格子数 $N_j+1=145$ について、 
+南北格子数 $N_j+1=145$ として、
 格子位置 $i$ ($0\le i\le N_j$) について次を基底とする。
 ```math
 {\rm cosy}_n[j] = \cos\frac{2n\pi j}{N_j}
@@ -27,13 +27,13 @@
 {\rm cosy}_0[j] = \cos 0 = 1
 ```
 ```math
-{\rm cosy}_{\tfrac{1}{2}}[j] = \cos\frac{1\pi j}{N_j}
+{\rm cosy}_{\tfrac{1}{2}}[j] = \cos\frac{\pi j}{N_j}
 ```
 
 これらの基底・準基底を用いて、関数 $F[i]$ を次のように変換することを目指す。
 
 ```math
-F[i] = a_0 {\rm cosy}_0[j]
+F[i] = a_0
 + a_{\tfrac{1}{2}} {\rm cosy}_{\tfrac{1}{2}}[j]
 + \sum_{n=1}^{N_j/2} (a_n{\rm cosy}_n[j] + b_n{\rm siny}_n[j])
 ```
