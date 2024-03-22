@@ -40,8 +40,8 @@ a_{N_i/2} = \frac{1}{N_i} \sum_{i=0}^{N_i-1} \cos_{N_i/2}[i]F^*[i]
 ```
 
 ```math
-b_n = \frac{2}{N_i} \sum_{i=0}^{N_i-1} \sin_m[i]F^*[i]
-\quad\text{for}\quad n=1..N_i/2-1
+b_m = \frac{2}{N_i} \sum_{i=0}^{N_i-1} \sin_m[i]F^*[i]
+\quad\text{for}\quad m=1..N_i/2-1
 ```
 
 ## 逆変換
