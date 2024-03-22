@@ -6,7 +6,7 @@
 
 元のデータ $F[i]$ から平均値を差し引いた $F^*[i]$ を処理対象とする。
 
-数学的には準基底 $\cos_0$ を含めても直交なんだから、
+数学的には準基底 ${\rm cosx}_0$ を含めても直交なんだから、
 DC成分が乗った生データで各基底と内積とっても結果は変わらないはずではあるが、
 無駄に桁が大きい数値を加減算すると桁落ちのおそれがある。
 
@@ -20,7 +20,7 @@ F^*[i] = F[i] - a_0
 
 ## 順変換
 数学的に美しいのは基底を
-$\sqrt{2}\cos_m[i], \sqrt{2}\sin_m[i]$
+$\sqrt{2}{\rm cosx}_m[i], \sqrt{2}{\rm sinx}_m[i]$
 とする正規直交基底を選ぶのであろうが、
 とりあえず逆変換を sin, cos ですっきり書けるように、
 順変換で2をかけてしまう実装にしている。
@@ -29,25 +29,25 @@ $\sqrt{2}\cos_m[i], \sqrt{2}\sin_m[i]$
 (あとで考えを変えるかもしれない)
 
 ```math
-a_m = \frac{2}{N_i} \sum_{i=0}^{N_i-1} \cos_m[i]F^*[i]
+a_m = \frac{2}{N_i} \sum_{i=0}^{N_i-1} {\rm cosx}_m[i]F^*[i]
 \quad\text{for}\quad m=1..N_i/2-1
 ```
 
 波数 $N_i/2$ についてだけ基底の内積が 1/2 じゃなくて 1 なので別扱い
 
 ```math
-a_{N_i/2} = \frac{1}{N_i} \sum_{i=0}^{N_i-1} \cos_{N_i/2}[i]F^*[i]
+a_{N_i/2} = \frac{1}{N_i} \sum_{i=0}^{N_i-1} {\rm cosx}_{N_i/2}[i]F^*[i]
 ```
 
 ```math
-b_m = \frac{2}{N_i} \sum_{i=0}^{N_i-1} \sin_m[i]F^*[i]
+b_m = \frac{2}{N_i} \sum_{i=0}^{N_i-1} {\rm sinx}_m[i]F^*[i]
 \quad\text{for}\quad m=1..N_i/2-1
 ```
 
 ## 逆変換
 
 ```math
-F[i] = a_0 + \sum_{m=1}^{N_i/2} (a_m\cos_m[i] + b_m\sin_m[i])
+F[i] = a_0 + \sum_{m=1}^{N_i/2} (a_m{\rm cosx}_m[i] + b_m{\rm sinx}_m[i])
 ```
 
 # 実験コードと結果

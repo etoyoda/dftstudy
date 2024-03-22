@@ -8,7 +8,7 @@
 ふたつの波数 $1\le n\le N_i/2$, $1\le m\le N_i/2$ について:
 
 ```math
-\frac{1}{N_i} \sum_{i=0}^{N_i-1}\cos_n[i]\cos_m[i]
+\frac{1}{N_i} \sum_{i=0}^{N_i-1}{\rm cosx}_n[i]{\rm cosx}_m[i]
 = \left\{\begin{matrix}
 0 & \text{if}\quad n \ne m \hfill \\
 1/2 & \text{if}\quad n = m \ne N_i/2 \\
@@ -17,12 +17,12 @@
 ```
 
 ```math
-\frac{1}{N_i} \sum_{i=0}^{N_i-1}\cos_n[i]\sin_m[i]
+\frac{1}{N_i} \sum_{i=0}^{N_i-1}{\rm cosx}_n[i]{\rm sinx}_m[i]
 = 0
 ```
 
 ```math
-\frac{1}{N_i} \sum_{i=0}^{N_i-1}\sin_n[i]\sin_m[i]
+\frac{1}{N_i} \sum_{i=0}^{N_i-1}{\rm sinx}_n[i]{\rm sinx}_m[i]
 = \left\{\begin{matrix}
 0 & \text{if}\quad n \ne m \hfill \\
 1/2 & \text{if}\quad n = m \ne N_i/2 \\
@@ -32,8 +32,8 @@
 
 ## 準基底
 
-準基底 $\cos_0$ を含めるように拡張しても上記の関係は成り立つ。
-ただし、いうまでもないかもしれないが、 $\cos_0\cdot\cos_0 = 1$ である。
+準基底 ${\rm cosx}_0$ を含めるように拡張しても上記の関係は成り立つ。
+ただし、いうまでもないかもしれないが、 ${\rm cosx}_0\cdot{\rm cosx}_0 = 1$ である。
 
 ## 数値的確認
 

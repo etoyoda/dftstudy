@@ -14,24 +14,24 @@
 であらわす。
 格子位置 $i$ ($0\le i\le N_i$) について次を基底とする。
 ```math
-\cos_m[i] = \cos\frac{2m\pi i}{N_i}
+{\rm cosx}_m[i] = \cos\frac{2m\pi i}{N_i}
 \quad\text{for}\quad m=1..\frac{N_i}{2};
 ```
 ```math
-\sin_m[i] = \sin\frac{2m\pi i}{N_i}
+{\rm sinx}_m[i] = \sin\frac{2m\pi i}{N_i}
 \quad\text{for}\quad m=1..\frac{N_i}{2}-1
 ```
 
 これらの基底を用いて、周期関数 $F[i]$ を次のように変換することを目指す。
 
 ```math
-F[i] = a_0 + \sum_{m=1}^{N_i/2} (a_m\cos_m[i] + b_m\sin_m[i])
+F[i] = a_0 + \sum_{m=1}^{N_i/2} (a_m{\rm cosx}_m[i] + b_m{\rm sinx}_m[i])
 ```
 
 ### 準基底
 
 定数 $a_0$ については、
-$\cos_0[i] = \cos 0 = 1$
+${\rm cosx}_0[i] = \cos 0 = 1$
 という追加の基底があると考えることもできる。
 
 普通のフーリエ変換ではそうは考えないので、準基底と呼んでおく。
@@ -39,11 +39,11 @@ $\cos_0[i] = \cos 0 = 1$
 ### 欠番基底
 
 波数 $N_i/2$ の sin 系列の基底は欠けている。 
-一般には $\sin_{N_i/2} = 0$ だからこの項を計算する効果がない。
+一般には ${\rm sinx}_{N_i/2} = 0$ だからこの項を計算する効果がない。
 なので $b_{N_i/2} = 0$ としてよい。
 
 以下の実際の値で、
-$\sin_{144}[i] = 0$
+${\rm sinx}_{144}[i] = 0$
 という結果になっていることで確認できる。
 
 ## 実際の値
