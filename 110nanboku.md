@@ -53,7 +53,7 @@ F[i] = a_0
 + \sum_{n=1}^{N_j/2} (a_n{\rm cosy}_n[j] + b_n{\rm siny}_n[j])
 ```
 
-# テストプログラム
+# テストプログラム（直交性の確認）
 
 東西のときとほとんど変わらないが、直交性を確認する。
 
@@ -89,6 +89,8 @@ const float PREC = 2.5e-6f;
 int
 main(void) {
 
+  float maxerr = 0.0f;
+
   puts("cos*cos");
   for (int m=1; m<=HALF_NJ; m++) {
     for (int n=1; n<=m; n++) {
@@ -96,10 +98,11 @@ main(void) {
       for (int j=0; j<NJ; j++) {
         sum += cospy(m*j) * cospy(n*j);
       }
-      float expect = (m == n) ? 0.5f : 0.0f;
-      if (fabsf(sum/NJ-expect) > PREC) {
-        printf("%4d %4d %+9.2g\n", m, n, sum/NJ-expect);
-      }
+      float expect = (m == n) ? ((m == HALF_NJ) ? 1.0f : 0.5f) : 0.0f;
+      float err = fabsf(sum/NJ-expect);
+      if (err > maxerr) maxerr = err;
+      if (err < PREC) continue;
+      printf("%4d %4d %#9.3g\n", m, n, sum/NJ-expect);
     }
   }
 
@@ -111,9 +114,10 @@ main(void) {
         sum += cospy(m*j) * sinpy(n*j);
       }
       float expect = 0.0;
-      if (fabsf(sum/NJ-expect) > PREC) {
-        printf("%4d %4d %+9.2g\n", m, n, sum/NJ-expect);
-      }
+      float err = fabsf(sum/NJ-expect);
+      if (err > maxerr) maxerr = err;
+      if (err < PREC) continue;
+      printf("%4d %4d %#9.3g\n", m, n, sum/NJ-expect);
     }
   }
 
@@ -124,12 +128,14 @@ main(void) {
       for (int j=0; j<NJ; j++) {
         sum += sinpy(m*j) * sinpy(n*j);
       }
-      float expect = (m == n) ? 0.5f : 0.0f;
-      if (fabsf(sum/NJ-expect) > PREC) {
-        printf("%4d %4d %+9.2g\n", m, n, sum/NJ-expect);
-      }
+      float expect = (m == n) ? ((m==HALF_NJ) ? 0.0f : 0.5f) : 0.0f;
+      float err = fabsf(sum/NJ-expect);
+      if (err > maxerr) maxerr = err;
+      if (err < PREC) continue;
+      printf("%4d %4d %#9.3g\n", m, n, sum/NJ-expect);
     }
   }
+  printf("maxerr=%#9.3g\n", maxerr);
 
   return 0;
 }
@@ -138,8 +144,7 @@ main(void) {
 実行結果
 ```text:110nanboku.txt
 cos*cos
-  72   72      +0.5
 cos*sin
 sin*sin
-  72   72      -0.5
+maxerr= 2.01e-06
 ```
